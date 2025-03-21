@@ -1,0 +1,38 @@
+{
+    "manifest_version": 3,
+    "name": "Taskify - AI-Powered Productive Browsing",
+    "version": "1.0",
+    "description": "Enhance productivity by blocking distractions and curating AI-driven content recommendations.",
+    "permissions": [
+      "tabs",
+      "storage",
+      "scripting",
+      "activeTab"
+    ],
+    "host_permissions": [
+      "https://www.youtube.com/*",
+      "https://www.facebook.com/*",
+      "https://www.instagram.com/*",
+      "https://www.tiktok.com/*",
+      "https://www.twitter.com/*"
+    ],
+    "background": {
+      "service_worker": "background.js"
+    },
+    "content_scripts": [
+      {
+        "matches": ["<all_urls>"],
+        "js": ["content.js"],
+        "run_at": "document_start"
+      }
+    ],
+    "action": {
+      "default_popup": "index.html",
+      "default_icon": {
+        "16": "icons/icon16.png",
+        "48": "icons/icon48.png",
+        "128": "icons/icon128.png"
+      }
+    }
+  }
+  
