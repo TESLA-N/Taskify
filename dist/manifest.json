@@ -1,22 +1,17 @@
+
+
 {
   "manifest_version": 3,
-  "name": "Taskify",
+  "name": "Website Blocker",
   "version": "1.0",
-  "description": "A simple website blocker",
-  "permissions": [
-    "storage",
-    "declarativeNetRequest",
-    "declarativeNetRequestWithHostAccess"
-  ],
-  "host_permissions": [
-    "https://*/*",
-    "http://*/*"
-  ],
+  "description": "Block distracting websites based on user prompt.",
+  "permissions": ["storage", "webRequest", "webRequestBlocking", "declarativeNetRequest"],
+  "host_permissions": ["<all_urls>"],
   "background": {
     "service_worker": "background.js"
   },
   "action": {
     "default_popup": "index.html"
-    
   }
+  
 }

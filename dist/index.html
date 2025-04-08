@@ -1,15 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Website Blocker</title>
-    <script src="popup.js" defer></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Website Blocker</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      width: 340px;
+      margin: 0;
+      padding: 0;
+      background: #f9f9f9;
+    }
+
+    .container {
+      width: 90%;
+      margin: 20px auto;
+      padding: 15px;
+      background: white;
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+      border-radius: 10px;
+      text-align: center;
+    }
+
+    h2, h3 {
+      margin-top: 0;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      font-size: 14px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      background: #e63946;
+      color: white;
+      font-weight: bold;
+      font-size: 15px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background: #d62828;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      text-align: left;
+    }
+
+    li {
+      background: #f1f1f1;
+      padding: 10px;
+      margin-top: 6px;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+
+    #status {
+      font-size: 14px;
+      margin: 10px 0;
+      color: #555;
+    }
+  </style>
 </head>
 <body>
-    <h1>Website Blocker</h1>
-    <input type="text" id="siteInput" placeholder="Enter website URL">
-    <button id="blockBtn">Block</button>
-    <ul id="blockedList"></ul>
+  <div class="container">
+    <h2>Website Blocker</h2>
+    <input type="text" id="userInput" placeholder="e.g. Block Instagram and YouTube for 1 hour" />
+    <button id="submitBtn">Block</button>
+    <p id="status">Status: Waiting for input</p>
+
+    <h3>Currently Blocked Websites:</h3>
+    <!-- <ul id="blockedList"></ul> -->
+    <!-- Add this where you want the countdowns to show -->
+<div id="countdownContainer" style="margin-top: 10px;"></div>
+
+  </div>
+
+  <script src="popup.js"></script>
 </body>
 </html>
