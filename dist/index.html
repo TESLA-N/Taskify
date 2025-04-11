@@ -12,6 +12,7 @@
     body {
       font-family: Arial, sans-serif;
       width: 340px;
+      height: 500px;
       margin: 0;
       padding: 0;
       background: #f9f9f9;
@@ -19,6 +20,7 @@
 
     .container {
       width: 90%;
+      height: 100%;
       margin: 20px auto;
       padding: 15px;
       background: white;
@@ -42,6 +44,7 @@
 
     button {
       width: 100%;
+      
       padding: 10px;
       background: #e63946;
       color: white;
@@ -76,6 +79,16 @@
       margin: 10px 0;
       color: #555;
     }
+    #unblockAllBtn {
+  background-color: #ff4d4d;
+  color: white;
+  padding: 10px;
+  border: none;
+  margin-top: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
   </style>
 </head>
 <body>
@@ -83,6 +96,8 @@
     <h2>Website Blocker</h2>
     <input type="text" id="userInput" placeholder="e.g. Block Instagram and YouTube for 1 hour" />
     <button id="submitBtn">Block</button>
+    <button id="unblockAllBtn">🛑 Unblock All</button>
+
     <p id="status">Status: Waiting for input</p>
 
     <h3>Currently Blocked Websites:</h3>

@@ -5,7 +5,7 @@
   "name": "Website Blocker",
   "version": "1.0",
   "description": "Block distracting websites based on user prompt.",
-  "permissions": ["storage", "webRequest", "webRequestBlocking", "declarativeNetRequest"],
+  "permissions": ["storage", "webRequest", "webRequestBlocking", "declarativeNetRequest", "declarativeNetRequestWithHostAccess"],
   "host_permissions": ["<all_urls>"],
   "background": {
     "service_worker": "background.js"

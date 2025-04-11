@@ -18,6 +18,24 @@ document.getElementById("submitBtn").addEventListener("click", async () => {
     loadBlockedSites(); // Refresh list after storing
   });
 });
+//unblocking of all websites
+document.getElementById("unblockAllBtn").addEventListener("click", () => {
+  chrome.declarativeNetRequest.getDynamicRules((rules) => {
+    const ruleIds = rules.map(rule => rule.id);
+
+    chrome.declarativeNetRequest.updateDynamicRules({
+      removeRuleIds: ruleIds
+    }, () => {
+      chrome.storage.local.set({ blockedSites: [] }, () => {
+        console.log("🧹 All sites unblocked!");
+        loadBlockedSites();      // Refresh list
+        updateCountdowns();      // Refresh countdown display
+        document.getElementById("status").textContent = "✅ All sites unblocked!";
+      });
+    });
+  });
+});
+
 
 // Gemini extraction logic
 async function extractBlockData(userPrompt) {
@@ -97,33 +115,68 @@ function formatTimeLeft(ms) {
   return `${minutes}m ${seconds}s`;
 }
 // function for coundown timer
+// function updateCountdowns() {
+//   chrome.storage.local.get("blockedSites", ({ blockedSites }) => {
+//       const container = document.getElementById("countdownContainer");
+//       container.innerHTML = "";
+
+//       if (!blockedSites || blockedSites.length === 0) {
+//           container.innerHTML = "<p>No sites are currently blocked.</p>";
+//           return;
+//       }
+
+//       const now = Date.now();
+
+//       blockedSites.forEach(site => {
+//           const timeLeft = site.unblockAt - now;
+//           const div = document.createElement("div");
+//           div.className = "countdown-item";
+
+//           if (timeLeft > 0) {
+//               div.textContent = `${site.domain} ⏳ ${formatTimeLeft(timeLeft)}`;
+//           } else {
+//               div.textContent = `${site.domain} ✅ Unblocked`;
+//           }
+
+//           container.appendChild(div);
+//       });
+//   });
+// }
 function updateCountdowns() {
   chrome.storage.local.get("blockedSites", ({ blockedSites }) => {
-      const container = document.getElementById("countdownContainer");
-      container.innerHTML = "";
+    const container = document.getElementById("countdownContainer");
+    container.innerHTML = "";
 
-      if (!blockedSites || blockedSites.length === 0) {
-          container.innerHTML = "<p>No sites are currently blocked.</p>";
-          return;
+    if (!blockedSites || blockedSites.length === 0) {
+      container.innerHTML = "<p>No sites are currently blocked.</p>";
+      return;
+    }
+
+    const now = Date.now();
+    let allExpired = true;
+
+    blockedSites.forEach(site => {
+      const timeLeft = site.unblockAt - now;
+      const div = document.createElement("div");
+      div.className = "countdown-item";
+
+      if (timeLeft > 0) {
+        allExpired = false;
+        div.textContent = `${site.domain} ⏳ ${formatTimeLeft(timeLeft)}`;
+      } else {
+        div.textContent = `${site.domain} ✅ Unblocked`;
       }
 
-      const now = Date.now();
+      container.appendChild(div);
+    });
 
-      blockedSites.forEach(site => {
-          const timeLeft = site.unblockAt - now;
-          const div = document.createElement("div");
-          div.className = "countdown-item";
-
-          if (timeLeft > 0) {
-              div.textContent = `${site.domain} ⏳ ${formatTimeLeft(timeLeft)}`;
-          } else {
-              div.textContent = `${site.domain} ✅ Unblocked`;
-          }
-
-          container.appendChild(div);
-      });
+    // If all sites are expired, auto-unblock them
+    if (allExpired && blockedSites.length > 0) {
+      document.getElementById("unblockAllBtn").click();
+    }
   });
 }
+
 
 // ⏱ Update every second
 setInterval(updateCountdowns, 1000);
