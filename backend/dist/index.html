@@ -88,6 +88,17 @@
   border-radius: 5px;
   cursor: pointer;
 }
+#prevsess
+{
+  background-color: #ff4d4d;
+  color: white;
+  padding: 10px;
+  border: none;
+  margin-top: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+
+}
 
   </style>
 </head>
@@ -97,6 +108,8 @@
     <input type="text" id="userInput" placeholder="e.g. Block Instagram and YouTube for 1 hour" />
     <button id="submitBtn">Block</button>
     <button id="unblockAllBtn">🛑 Unblock All</button>
+    <input type="text" id="sessionIdInput" placeholder="enter object_id from mongodb">
+    <button id="prevsess">prevsess</button>
 
     <p id="status">Status: Waiting for input</p>
 
