@@ -1,12 +1,24 @@
-# React + Vite
+🚀 Taskify – An AI Powered Productivity Extension for Smart Browsing ⏳💻
+Taskify is a powerful browser extension built with a full-stack MERN architecture that helps you stay focused and reduce digital distractions. Inspired by ChatGPT’s UI, Taskify intelligently tailors your browsing experience to keep you on track.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+🛠️ Tech Stack
+Frontend: React.js, HTML5, CSS3, TailwindCSS ⚛️🎨
 
-Currently, two official plugins are available:
+Backend: Node.js, Express.js 🧠
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Database: MongoDB 🍃
 
-## Expanding the ESLint configuration
+Platform: Browser Extension 🧩
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+✨ Features
+🚫 Website Blocking Mode:
+Block distracting websites using a simple prompt for a chosen duration. Stay in control of your attention.
+
+🎯 Focus Mode for YouTube:
+Hides Shorts, infinite scroll, and shows only task-relevant content based on what you’re working on.
+
+🔁 Session History Recall:
+Reopen and resume previous focus sessions with context — for improved continuity and workflow retention.
+
+💬 ChatGPT-Inspired UI:
+Smooth, minimal, and intuitive interface that feels like chatting with your productivity assistant.
